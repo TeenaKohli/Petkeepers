@@ -3,7 +3,12 @@ pipeline {
   options {
     buildDiscarder(logRotator(numToKeepStr: '5'))
   }
-  stages {
+    stages {
+    stage('Install') {
+      steps {
+            bat mvn clean install
+      }
+      }
     stage('Scan') {
       steps {
         withSonarQubeEnv(installationName: 'sq1') { 
