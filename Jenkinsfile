@@ -1,10 +1,15 @@
-node {
-  stage('SCM') {
-    checkout scm
+pipeline {
+  agent any
+  options {
+    buildDiscarder(logRotator(numToKeepStr: '5'))
   }
-  stage('SonarQube Analysis') {
-    withSonarQubeEnv(installationName: 'sq1') {
-      bat "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=Petkeepers"
+    stages {
+    stage('Scan') {
+      steps {
+        withSonarQubeEnv(installationName: 'sq1') { 
+          bat "mvn clean verify sonar:sonar -Dsonar.projectKey=Petkeepers"
+        }
+      }
     }
   }
 }
