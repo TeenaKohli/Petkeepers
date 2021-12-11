@@ -19,6 +19,6 @@ resource "aws_instance" "app_server" {
   user_data     = file("file.sh")
 
   tags = {
-    Name = "ExampleAppServerInstance"
+    Name = "DevOpsSec-App"
   }
 }
