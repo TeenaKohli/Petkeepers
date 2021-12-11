@@ -38,6 +38,7 @@ pipeline {
         bat 'terraform apply --auto-approve'
       }
     }
+  }
 	 
      post {
     // Always runs. And it runs before any of the other post conditions.
@@ -53,11 +54,13 @@ pipeline {
           to: "${EMAIL_TO}", 
          subject: 'Build failed in Jenkins: $PROJECT_NAME - #$BUILD_NUMBER'
     }
+	     
  always {
       // Let's wipe out the workspace before we finish!
       deleteDir()
     }
-  }
+  }	     
+  
   
   // The options directive is for configuration that applies to the whole job.
   options {
@@ -70,4 +73,4 @@ pipeline {
     timeout(time: 60, unit: 'MINUTES')
   }
   }
-}
+
