@@ -1,16 +1,11 @@
-pipeline {
-  agent any
-  options {
-    buildDiscarder(logRotator(numToKeepStr: '5'))
+node {
+  stage('SCM') {
+    checkout scm
   }
-    stages {
-    stage('Scan') {
-      steps {
-        withSonarQubeEnv(installationName: 'sq1') { 
-          bat 'mvn clean install'
-          bat 'mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:sonar'
-        }
-      }
+  stage('SonarQube Analysis') {
+    def mvn = tool 'Default Maven';
+    withSonarQubeEnv() {
+      sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=Petkeepers"
     }
   }
 }
