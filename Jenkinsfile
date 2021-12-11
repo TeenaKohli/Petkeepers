@@ -6,7 +6,7 @@ pipeline {
     stages {
     stage('Install') {
       steps {
-            bat mvn clean install
+            bat 'mvn clean install'
       }
       }
     stage('Scan') {
