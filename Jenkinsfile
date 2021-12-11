@@ -5,7 +5,7 @@ pipeline {
   }
   
    environment {
-	   EMAIL_TO = 'x20226845@student.ncirl.ie'
+	 //EMAIL_TO = 'x20226845@student.ncirl.ie'
         aws_access_key_id='ASIA3JXYMGHCKR52R4HW'
 		aws_secret_access_key='aN5epQnw57Y0qliTHcq1Pig4Q+kGSzpxrLpot3PW'
 		aws_session_token='FwoGZXIvYXdzEDwaDKse/c/hkK7IMUlzWiLLAbmcD4BZ5tMfLiwHPnfE1dHCYAQljvSZl80bF6OA1N2VsrHggJYb9OEbqEHpn/tII9mM6EKS47s/0MqRXA3NwO6taFviAfGxMZ1gefGTVorNbygqAECFFGoN5o9gHMdAKDmnuyk9P6SrtZRPpU1pcLFJFQnLT205WuLiYaglZuePham9gGoNjcIixkbmKQDbVS5ySivEdDdVQtmilm5NAe6N2oxYcof56nKfDGMtq/QmOuvxb4j+Xh8C57b8FfGPluMqyaf5fIUuSGw+KPr10Y0GMi1zC8cZKg0XH4dk20iZVckJKoGWcxlxji0uDavtIjyDI1wVQTBv8VTsQdyoEQs='
@@ -44,15 +44,24 @@ pipeline {
     // Always runs. And it runs before any of the other post conditions.
        
  success {
-         emailext body: 'Check console output at $BUILD_URL to view the results. \n\n ${CHANGES} \n\n -------------------------------------------------- \n${BUILD_LOG, maxLines=100, escapeHtml=false}', 
-          to: "${EMAIL_TO}", 
-         subject: 'Congratulation on successful Build: $PROJECT_NAME - #$BUILD_NUMBER'
+	  mail(from: "x20226845@student.ncirl.ie", 
+           to: "x20226845@student.ncirl.ie", 
+           subject: "That build passed.",
+           body: "Nothing to see here")
+    }
+      //   emailext body: 'Check console output at $BUILD_URL to view the results. \n\n ${CHANGES} \n\n -------------------------------------------------- \n${BUILD_LOG, maxLines=100, escapeHtml=false}', 
+       //   to: "${EMAIL_TO}", 
+        // subject: 'Congratulation on successful Build: $PROJECT_NAME - #$BUILD_NUMBER'
     }
 
     failure {
-         emailext body: 'Check console output at $BUILD_URL to view the results. \n\n ${CHANGES} \n\n -------------------------------------------------- \n${BUILD_LOG, maxLines=100, escapeHtml=false}', 
-          to: "${EMAIL_TO}", 
-         subject: 'Build failed in Jenkins: $PROJECT_NAME - #$BUILD_NUMBER'
+	     mail(from: "x20226845@student.ncirl.ie", 
+           to: "x20226845@student.ncirl.ie", 
+           subject: "That build passed.",
+           body: "Nothing to see here")
+      //   emailext body: 'Check console output at $BUILD_URL to view the results. \n\n ${CHANGES} \n\n -------------------------------------------------- \n${BUILD_LOG, maxLines=100, escapeHtml=false}', 
+       //   to: "${EMAIL_TO}", 
+        // subject: 'Build failed in Jenkins: $PROJECT_NAME - #$BUILD_NUMBER'
     }
 	     
  always {
