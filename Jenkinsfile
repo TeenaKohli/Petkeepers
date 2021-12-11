@@ -43,7 +43,7 @@ pipeline {
      post {
     // Always runs. And it runs before any of the other post conditions.
        
- Success {
+ success {
          emailext body: 'Check console output at $BUILD_URL to view the results. \n\n ${CHANGES} \n\n -------------------------------------------------- \n${BUILD_LOG, maxLines=100, escapeHtml=false}', 
           to: "${EMAIL_TO}", 
          subject: 'Congratulation on successful Build: $PROJECT_NAME - #$BUILD_NUMBER'
