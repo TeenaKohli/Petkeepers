@@ -4,7 +4,6 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "users", schema = "petkeepers")
-@Test
 public class Users {
 
     @Id
