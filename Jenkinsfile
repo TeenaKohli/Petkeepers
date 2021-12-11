@@ -38,7 +38,6 @@ pipeline {
         bat 'terraform apply --auto-approve'
       }
     }
-  }
 	 
      post {
     // Always runs. And it runs before any of the other post conditions.
@@ -69,7 +68,7 @@ pipeline {
       deleteDir()
     }
   }	     
-  
+}  
   
   // The options directive is for configuration that applies to the whole job.
   options {
@@ -81,6 +80,4 @@ pipeline {
     // let's time it out after an hour.
     timeout(time: 60, unit: 'MINUTES')
   }
-
 }
-
