@@ -12,7 +12,7 @@ pipeline {
         }
 		}
 	}
-   stage ('Run Downstream Terraform') 
+   stage('Run Downstream Terraform') 
 	{
     build job: 'terraform integeration'
 	}  
