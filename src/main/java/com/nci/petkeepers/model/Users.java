@@ -32,6 +32,7 @@ public class Users {
     @Column(name = "usertype")
     private String usertype;
 
+
     public String getName() {
         return name;
     }
