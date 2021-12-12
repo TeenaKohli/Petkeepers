@@ -1,3 +1,0 @@
-[0m[1maws_instance.DevOpsSec: Importing from ID "i-0ce767a207957a059"...[0m
-[0m[1m[32maws_instance.DevOpsSec: Import prepared![0m
-[0m[32m  Prepared aws_instance for import[0m

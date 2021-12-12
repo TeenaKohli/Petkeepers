@@ -26,6 +26,6 @@ resource "aws_instance" "DevOpSec" {
 #  key_name = "DevOpSec"
 
   tags = {
-    Name = "ExampleAppServerInstance"
+    Name = "DevOpsSec-App"
   }
 }
