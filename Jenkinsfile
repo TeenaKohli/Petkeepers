@@ -33,7 +33,7 @@ pipeline {
 	}
 	  
      //Jar creation
-     stage('Jar creation') {
+     stage('JarCreation') {
 	   steps {
         bat 'mvn clean package'
       }
@@ -43,14 +43,14 @@ pipeline {
       steps{
         script {
           dockerImage = docker.build registry
-		  docker.withRegistry( '', registryCredential ) {
+	    docker.withRegistry( '', registryCredential ) {
             dockerImage.push()
             }
         }
       }
     }
     
-    stage('Terraform Init & apply') {
+    stage('Terraform init & apply') {
       steps {
 	bat 'terraform init'
         bat 'terraform apply --auto-approve'
