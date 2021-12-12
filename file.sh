@@ -1,9 +1,9 @@
-sudo yum install docker 
+sudo yum install -y docker 
 sudo docker --version
-sudo yum install -y git
 sudo service docker start
 sudo systemctl enable docker
-git clone -b new https://github.com/TeenaKohli/petkeepers.git
-cd petkeepers
-sudo docker build --pull --rm -f "Dockerfile" -t petkeepers-service:latest "."
-sudo docker run --name petkeepers-app  -p 8080:8080 -d petkeepers-service:latest
+sudo docker login --username=teenakohli2286 --password=teena123
+sudo docker pull teenakohli2286/petkeepers.jar
+sudo docker run -p 8080:8080 -d teenakohli2286/petkeepers.jar
+sudo docker pull teenakohli2286/petkeepers-ui
+sudo docker run -p 3000:3000 -d teenakohli2286/petkeepers-ui

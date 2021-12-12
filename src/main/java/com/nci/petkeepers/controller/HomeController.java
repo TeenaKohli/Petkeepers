@@ -1,5 +1,6 @@
 package com.nci.petkeepers.controller;
 
+import com.nci.petkeepers.mail.MailHandler;
 import com.nci.petkeepers.model.Users;
 import com.nci.petkeepers.repository.UsersRepository;
 import org.apache.catalina.User;
@@ -14,6 +15,10 @@ import java.util.Optional;
 public class HomeController {
     @Autowired
     UsersRepository usersRepository;
+
+    @Autowired
+    MailHandler mailHandler;
+
 
     @GetMapping("/getAll")
     @ResponseBody
@@ -41,8 +46,11 @@ public class HomeController {
         return users1;
     }
 
-
-
+    @RequestMapping(value = "/sendemail")
+    public String sendEmail() {
+        mailHandler.sendMail("pratikkasalkar@gmail.com","Request to Contact ","Hi, Admin would like to contact you regarding your availabilty for pet keeping. \n Regards,\n Team Petkeepers");
+        return "Email sent successfully";
+    }
 
 }
 

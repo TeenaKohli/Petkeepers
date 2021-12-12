@@ -13,6 +13,15 @@ public class Users {
     @Column(name = "username")
     private String username;
 
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "imagelink")
+    private String imagelink;
+
+    @Column(name = "description")
+    private String description;
+
     @Column(name = "password")
     private String password;
 
@@ -21,6 +30,31 @@ public class Users {
 
     @Column(name = "usertype")
     private String usertype;
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getImagelink() {
+        return imagelink;
+    }
+
+    public void setImagelink(String imagelink) {
+        this.imagelink = imagelink;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public int getId() {
         return id;
